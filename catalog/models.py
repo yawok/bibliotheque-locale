@@ -36,10 +36,10 @@ class BookInstance(models.Model):
     uniqueid = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID of this book for the whole library.")
     book = models.ForeignKey(Book, on_delete=models.RESTRICT, null=True)
     imprint = models.CharField(max_length=255)
-    due_date = models.DateTimeField(null=True, blank=True)
+    due_date = models.DateField(null=True, blank=True)
     LOAN_STATUS = (
         ('m', 'Maintainance'),
-        ('o', 'On load'),
+        ('o', 'On loan'),
         ('a', 'Available'),
         ('r', 'Reserved'),
     )
@@ -57,7 +57,7 @@ class BookInstance(models.Model):
         
     
     def __str__(self):
-        return f"{self.id} ({self.book.title})"
+        return f"{self.uniqueid} ({self.book.title})"
     
     
     
@@ -65,8 +65,9 @@ class Author(models.Model):
     """A model for Auther."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    date_of_birth = models.DateTimeField(null=True, blank=True)
-    date_of_death = models.DateTimeField('Died', null=True, blank=True)
+    nationality = models.ManyToManyField('Nationality', help_text="Select author's nationality")
+    date_of_birth = models.DateField(null=True, blank=True)
+    date_of_death = models.DateField('Died', null=True, blank=True)
     
     
     class Meta:
@@ -89,3 +90,11 @@ class Language(models.Model):
     def __str__(self):
         return self.name
     
+    
+class Nationality(models.Model):
+    """A model for nationalities of authors"""
+    name = models.CharField(max_length=255, help_text="Enter a nationality")
+    
+    
+    def __str__(self) -> str:
+        return self.name
