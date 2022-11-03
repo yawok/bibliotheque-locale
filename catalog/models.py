@@ -26,6 +26,11 @@ class Book(models.Model):
         return self.title
     
     
+    def display_genre(self):
+        """Create a list of the book's genre required for display in the Admin interface."""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    
+    
     def get_absolute_url(self):
         return reverse("book-detail", args=[str(self.id)])
     
@@ -33,10 +38,10 @@ class Book(models.Model):
     
 class BookInstance(models.Model):
     """A model for a book instance."""
-    uniqueid = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID of this book for the whole library.")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID of this book for the whole library.")
     book = models.ForeignKey(Book, on_delete=models.RESTRICT, null=True)
     imprint = models.CharField(max_length=255)
-    due_date = models.DateField(null=True, blank=True)
+    due_back = models.DateField(null=True, blank=True)
     LOAN_STATUS = (
         ('m', 'Maintainance'),
         ('o', 'On loan'),
@@ -53,11 +58,11 @@ class BookInstance(models.Model):
     
     
     class Meta:
-        ordering = ['due_date']
+        ordering = ['due_back']
         
     
     def __str__(self):
-        return f"{self.uniqueid} ({self.book.title})"
+        return f"{self.id} ({self.book.title})"
     
     
     
