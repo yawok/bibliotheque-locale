@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}<title>Home</title>{% endblock  %}
+
+
+{% block content  %}
+  <h1>Bibliotheque Locale Home</h1>
+  <p>Welcome to Bibliotheque Locale, a website designed, with lots of guidance, by <a href="https://github.com/yawok"><em>Kenneth Yaw Obeng</em></a>.</p>
+  <h2>Dynamic content</h2>
+  <p>This library has the following record counts:</p>
+  <ul>
+    <li><strong>Books: </strong> {{ number_of_books }}</li>
+    <li><strong>Copies: </strong> {{ number_of_book_instances }}</li>
+    <li><strong>Copies available: </strong> {{ number_of_available_book_instances }}</li>
+    <li><strong>Authors: </strong> {{ number_of_authors }}</li>
+    <li><strong>Book titles that contain <em>'of'</em> :</strong> {{ books_containing_of }}</li>
+  </ul>
+{% endblock %}
