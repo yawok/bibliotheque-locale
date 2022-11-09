@@ -1,0 +1,20 @@
+{% extends "catalog/base_generic.html" %}
+
+{% block content %}
+    <h1><strong>Name:</strong> {{ author.get_full_name }}</h1>
+    <p>{{ author.date_of_birth }} - 
+        {% if author.date_of_death %}
+            {{ author.date_of_death }}
+        {% endif %}
+    </p>
+    <div style="margin-top:20px;margin-left:20px;">
+        <h3>Books</h3>
+        {% for book in author.book_set.all %}
+            <a href="{{ book.get_absolute_url }}"><strong>{{ book.title }}</strong></a>({{ book.bookinstance_set.count}})
+            <p>{{ book.summary }}</p>
+        {% endfor %}
+    </div>
+        
+    
+
+{% endblock %}

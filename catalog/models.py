@@ -83,6 +83,10 @@ class Author(models.Model):
         return reverse("author-detail", args=[str(self.id)])
     
 
+    def get_full_name(self):
+        """Return author's full name"""
+        return f'{self.last_name}, {self.first_name}'
+    
     def __str__(self):
         return f'{self.last_name}, {self.first_name}'
     
