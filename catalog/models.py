@@ -1,6 +1,10 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.contrib import admin
+
 import uuid
+from datetime import date
 
 
 class Genre(models.Model):
@@ -55,11 +59,20 @@ class BookInstance(models.Model):
         default='m',
         help_text='Book availability',
     )
+    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     
     
     class Meta:
         ordering = ['due_back']
         
+    @admin.display(
+        boolean=True,
+        ordering='due_back',
+        description='Over Due?'
+    )
+    def is_overdue(self):
+        """Check if book instance is overdue."""
+        return bool(self.due_back and (date.today() > self.due_back))
     
     def __str__(self):
         return f"{self.id} ({self.book.title})"
