@@ -1,7 +1,15 @@
-from django.shortcuts import render
+import datetime
+
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 from .models import Book, BookInstance, Author
-from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import RenewBookModelForm
+
 
 def index(request):
     """Returns the counts of books, book instances and authors."""
@@ -52,3 +60,40 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
     
+    
+    
+class BorrowedListView(PermissionRequiredMixin, generic.ListView):
+    permission_required = 'catalog.can_mark_returned'
+    model = BookInstance
+    template_name = 'catalog/all_borrowed_list.html'
+    paginate_by = 10
+    
+    
+    def get_queryset(self):
+        return BookInstance.objects.filter(status__exact='o').order_by('due_back')
+    
+@login_required
+@permission_required('catalog.can_mark_returned', raise_exception=True)   
+def renew_book_labrarian(request, pk):
+    book_instance = get_object_or_404(BookInstance, pk=pk)
+    
+    if request.method == 'POST':
+        form = RenewBookModelForm(request.POST) 
+
+        if form.is_valid():
+            book_instance.due_back = form.cleaned_data['renewal_date']
+            book_instance.save()
+            
+            return HttpResponseRedirect(reverse('borrowed'))
+    else:
+        proposed_renewal_date = datetime.datetime.today() + datetime.timedelta(weeks=3)
+        form = RenewBookModelForm(initial={
+            'renewal_date': proposed_renewal_date
+        })
+
+    context = {
+            'form': form,
+            'book_instance': book_instance
+        }
+
+    return render(request, 'catalog/book_renew_librarian.html', context)

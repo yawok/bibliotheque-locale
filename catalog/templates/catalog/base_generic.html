@@ -25,6 +25,11 @@
           {% else %}
             <li><a href="{% url 'login' %}">Login</a></li>
           {% endif %}
+          {% if user.is_staff %}
+            <hr>
+            <li>Staff</li>
+            <li><a href="{% url 'borrowed' %}">All borrowed</a></li>
+          {% endif %}
         </ul>
       {% endblock %}
       </div>
