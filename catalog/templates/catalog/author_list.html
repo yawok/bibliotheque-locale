@@ -2,6 +2,11 @@
 
 {% block content %}
     <h1>Author list</h1>
+
+    {% if user.is_staff %}
+        <p><a href="{% url 'author-create' %}">Create new author</a></p>
+    {% endif %}
+    
     {% for author in author_list %}
         <ul>
             <li>

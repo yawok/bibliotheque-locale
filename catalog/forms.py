@@ -1,6 +1,5 @@
 import datetime
 
-from django import forms
 from django.forms import ModelForm
 
 from .models import BookInstance
@@ -9,7 +8,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-class RenewBookModelForm(forms.ModelForm):
+class RenewBookModelForm(ModelForm):
     
     def clean_renewal_date(self):
         """Check if date is between now and 4 weeks."""

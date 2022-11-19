@@ -1,5 +1,8 @@
 {% extends "catalog/base_generic.html" %}
 
+
+
+
 {% block content %}
     <h1><strong>Name:</strong> {{ author.get_full_name }}</h1>
     <p>{{ author.date_of_birth }} - 
@@ -7,6 +10,12 @@
             {{ author.date_of_death }}
         {% endif %}
     </p>
+
+    {% if user.is_staff %}
+        <span style='padding-right:20px;'><a href="{% url 'author-update' author.id  %}">Update</a></span>
+        <span style='padding-right:20px;'><a href="{% url 'author-delete'  author.id %}">Delete</a></span>
+    {% endif %}
+
     <div style="margin-top:20px;margin-left:20px;">
         <h3>Books</h3>
         {% for book in author.book_set.all %}
@@ -14,6 +23,19 @@
             <p>{{ book.summary }}</p>
         {% endfor %}
     </div>
+    <tabel>
+        <tr>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
+
         
     
 
