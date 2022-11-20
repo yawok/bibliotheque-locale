@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Book, BookInstance, Author, Language, Genre
+from django_countries.widgets import CountrySelectWidget
 
 
 class BookInstanceInline(admin.TabularInline):
@@ -16,7 +17,8 @@ class BookInline(admin.TabularInline):
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth','date_of_death')
-    fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death'),]
+    fields = ['first_name', 'last_name', 'nationality', ('date_of_birth', 'date_of_death'),]
+    widgets = {'nationality': CountrySelectWidget()}
     inlines = [BookInline]
 
 @admin.register(Book)

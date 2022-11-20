@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
+from django_countries.widgets import CountrySelectWidget
+
 from .models import Book, BookInstance, Author
 from .forms import RenewBookModelForm
 
@@ -103,8 +105,10 @@ def renew_book_labrarian(request, pk):
 class AuthorCreate(CreateView, LoginRequiredMixin, PermissionRequiredMixin):
     permission_required = 'catalog.can_mark_returned'
     model = Author
-    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
-    initial = {'date_of_death': '19/11/2022'}
+    fields = ['first_name', 'last_name', 'nationality', 'date_of_birth', 'date_of_death']
+    initial = {'date_of_birth': '2000-01-01'}
+    widgets = {'nationality': CountrySelectWidget()}
+    
 
     
 class AuthorUpdate(UpdateView, LoginRequiredMixin, PermissionRequiredMixin):

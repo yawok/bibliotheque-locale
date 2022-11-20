@@ -5,11 +5,20 @@
 
 {% block content %}
     <h1><strong>Name:</strong> {{ author.get_full_name }}</h1>
+    <p>
+        Nationality:
+        {% for country in author.nationality %}
+            <i class="flag {{ country.flag_css }}"></i> {{ country.name }}
+        {% endfor %}
+    </p>
     <p>{{ author.date_of_birth }} - 
         {% if author.date_of_death %}
             {{ author.date_of_death }}
         {% endif %}
+
     </p>
+
+    
 
     {% if user.is_staff %}
         <span style='padding-right:20px;'><a href="{% url 'author-update' author.id  %}">Update</a></span>

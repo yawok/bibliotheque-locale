@@ -3,6 +3,9 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib import admin
 
+from django_countries.fields import CountryField
+from django_countries.widgets import CountrySelectWidget
+
 import uuid
 from datetime import date
 
@@ -85,9 +88,10 @@ class Author(models.Model):
     """A model for Auther."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    nationality = models.ManyToManyField('Nationality', help_text="Select author's nationality")
+    nationality = CountryField(multiple=True, blank_label='(select country)', help_text="Hold control to select multiple countries" )
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    
     
     
     class Meta:
@@ -114,11 +118,3 @@ class Language(models.Model):
     def __str__(self):
         return self.name
     
-    
-class Nationality(models.Model):
-    """A model for nationalities of authors"""
-    name = models.CharField(max_length=255, help_text="Enter a nationality")
-    
-    
-    def __str__(self) -> str:
-        return self.name
