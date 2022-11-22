@@ -27,6 +27,11 @@
 
     <div style="margin-top:20px;margin-left:20px;">
         <h3>Books</h3>
+        
+        {% if user.is_staff %}
+        <p><a href="{% url 'book-create' %}">Add book</a></p>
+        {% endif %}
+        
         {% for book in author.book_set.all %}
             <a href="{{ book.get_absolute_url }}"><strong>{{ book.title }}</strong></a>({{ book.bookinstance_set.count}})
             <p>{{ book.summary }}</p>

@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Book list</h1>
+    {% if user.is_staff %}
+        <a href="{% url 'book-create' %}">Add book</a>
+    {% endif %}
     {% if book_list %}
         {% for book in book_list %}
         <ul>

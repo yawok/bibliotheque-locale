@@ -41,7 +41,9 @@ class Book(models.Model):
     def get_absolute_url(self):
         return reverse("book-detail", args=[str(self.id)])
     
-    
+    class Meta:
+        permissions = (('can_add_book', 'Can add book'),)
+        
     
 class BookInstance(models.Model):
     """A model for a book instance."""
@@ -88,7 +90,7 @@ class Author(models.Model):
     """A model for Auther."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    nationality = CountryField(multiple=True, blank_label='(select country)', help_text="Hold control to select multiple countries" )
+    nationality = CountryField(multiple=True, blank_label='(select country)', help_text="Hold down “Control”, or “Command” on a Mac, to select more than one." )
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
     

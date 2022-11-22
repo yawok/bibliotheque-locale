@@ -2,11 +2,16 @@
 
 {% block content %}
     <h1>Title: {{book.title}}</h1>
-    <p><strong>Author: </strong><a href="">{{ book.author }}</a></p>
+    <p><strong>Author: </strong><a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p>
     <p><strong>Summary: </strong>{{ book.summary }}</p>
     <p><strong>ISBN: </strong>{{ book.isbn }}</p>
     <p><strong>Language: </strong>{{ book.language }}</p>
     <p><strong>Genre: </strong>{{ book.genre.all|join:', ' }}</p>
+
+    {% if user.is_staff %}
+        <span style='padding-right:20px;'><a href="{% url 'book-update' book.id  %}">Update</a></span>
+        <span style='padding-right:20px;'><a href="{% url 'book-delete'  book.id %}">Delete</a></span>
+    {% endif %}
 
     <div style="margin-left:20px;margin-top:20px">
         <h4>Copies</h4>
