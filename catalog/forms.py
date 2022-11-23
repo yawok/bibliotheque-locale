@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 class RenewBookModelForm(ModelForm):
     
-    def clean_renewal_date(self):
+    def clean_due_back(self):
         """Check if date is between now and 4 weeks."""
         data = self.cleaned_data['due_back']
 
@@ -26,5 +26,5 @@ class RenewBookModelForm(ModelForm):
     class Meta:
         model = BookInstance
         fields = ['due_back']
-        label = {'due_back': _('Renewal Date')}
-        help_text = {'due_back': _('Enter a date between now and 4 weeks(default 3 weeks).')}
+        labels = {'due_back': _('Renewal Date')}
+        help_texts = {'due_back': _('Enter a date between now and 4 weeks(default 3 weeks).')}
