@@ -92,7 +92,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     nationality = CountryField(multiple=True, blank_label='(select country)', help_text="Hold down “Control”, or “Command” on a Mac, to select more than one." )
     date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('Died', null=True, blank=True)
+    date_of_death = models.DateField('died', null=True, blank=True)
     
     
     
