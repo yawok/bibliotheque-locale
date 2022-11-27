@@ -42,7 +42,8 @@ class Book(models.Model):
         return reverse("book-detail", args=[str(self.id)])
     
     class Meta:
-        permissions = (('can_add_book', 'Can add book'),)
+        ordering = ['title']
+        permissions = (('can_add_book', 'Can add new book'),)
         
     
 class BookInstance(models.Model):
