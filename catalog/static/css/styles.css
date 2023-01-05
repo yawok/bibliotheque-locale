@@ -1,36 +1,32 @@
 * {
    padding: 0;
+   margin: 0;
+   font-family: 'Signika', sans-serif;
 }
 html {
     height: 100%;
 }
 body {
    background-color: #1E1A19;
-   color: #1E1A19;
+   color: #F55153;
+   height: 100%;
 
 }
 .mynavbar {
     padding: 2;
-    list-style: none;
     color: #F55153;
     background-color: #F5E3DE;
     height: 100%;
 
 }
+
 .page {
     height: 100%;
 }
 
-.nav {
-
-}
-
-h3>a {
-    margin-top: 5em;
-}
 
 .nav-link {
-    padding: 0.3;
+    padding: 0.6em;
     margin: 0;
     color:#1E1A19;
     font-weight: 800;
@@ -39,15 +35,18 @@ h3>a {
 }
 
 .subnav {
+    /* sub navigation elements */
+    padding: 0.6em;
     padding-left: 1.75em;
-    font-weight: 600;
-    
+}
+
+.mybrand {
+    font-family: 'Signika', sans-serif;
+    padding-top: 0.3em;
+    padding-bottom: 0;
+ 
 }
 
 .user {
-    padding: 0.5;
-    margin: 0;
-    color:#F55153;
-    font-weight: 800;
-    font-size: 1.2em 
+    padding-bottom: 0;
 }
