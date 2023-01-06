@@ -31,7 +31,7 @@ body {
     color:#1E1A19;
     font-weight: 800;
     font-size: 1.2em;
-
+    
 }
 
 .subnav {
@@ -44,9 +44,30 @@ body {
     font-family: 'Signika', sans-serif;
     padding-top: 0.3em;
     padding-bottom: 0;
- 
+    
 }
 
 .user {
     padding-bottom: 0;
+}
+
+
+
+.container {
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2em;
+}
+
+.sidebar-nav{
+    display: fixed;
+   
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    height: 100%;
+    
 }
