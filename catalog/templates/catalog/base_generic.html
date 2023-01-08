@@ -1,154 +1,215 @@
 <!DOCTYPE html>
-<html lang='en' class='page'>
-<head>
-  {# Load bootstrap5 tag library #}
-  {% load bootstrap5 %}
-
-  {# Load css and js #}
-  {% bootstrap_css %}
-  <script src="/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-  {# Display django.contrib.messages as Bootstrap alerts #}
-  {% bootstrap_messages %}
-
-  {% block title %}<title>Bibliotheque Locale</title>{% endblock %}
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
-  {% load static %}
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
-  {# google fonts #}
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Signika:wght@600;700&display=swap" rel="stylesheet">
-  <style> @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Signika:wght@600;700&display=swap'); </style>
-</head>
-<body class='page'>
-  
-  <div class="container-fluid page">
-    <div class="row page" >
-      <div class="col-sm-1 col-md-2 mynavbar">
-        <span class='brand'>
-        <a class="navbar-brand mybrand" href="{% url 'index' %}"><h3 class="h1 mybrand" >Bibliotheque<br>Locale</h3></a>
-        </span>
-      {% block sidebar %}
-        <ul class="nav flex-sm-column">
-          <li class="nav-item">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    {% block title %}
+      <title>Bibliotheque Locale</title>
+    {% endblock title %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}"/>
+    {# google fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Signika:wght@600;700&display=swap"
+          rel="stylesheet"/>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Signika:wght@600;700&display=swap'); 
+    </style>
+  </head>
+  <body>
+    <div class="grid entire-body">
+      <div class="col-2 sidebar-nav-style">
+        <nav>
+          <div class="row brand">
+            <a class="link" href="{% url 'index' %}">
+              <h3 class="my-h1">
+                Bibliotheque
+                <br/>
+                Locale
+              </h3>
+            </a>
+          </div>
+          <div class="row">
             <a class="nav-link" href="{% url 'index' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="25"
+                   height="25"
+                   fill="currentColor"
+                   class="bi bi-house-fill"
+                   viewBox="0 0 16 16">
                 <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
                 <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
               </svg>
               Home
-          </a>
-          </li>
-          <li class="nav-item active " aria-current="page"><a class="nav-link" href="{% url 'books' %}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
-              <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-            </svg>
-            All Books</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'authors' %}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-            </svg>
-            All Authors</a></li>
-          {% if user.is_authenticated %}
-            <li class="nav-item"> 
-              <a class="nav-link user" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample"> 
-                
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            </a>
+          </div>
+          <div class="row">
+            <a class="nav-link" href="{% url 'books' %}">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="25"
+                   height="25"
+                   fill="currentColor"
+                   class="bi bi-book-fill"
+                   viewBox="0 0 16 16">
+                <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+              </svg>
+              All Books
+            </a>
+          </div>
+          <div class="row">
+            <a class="nav-link" href="{% url 'authors' %}">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   width="25"
+                   height="25"
+                   fill="currentColor"
+                   class="bi bi-people-fill"
+                   viewBox="0 0 16 16">
+                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+              </svg>
+              All Authors
+            </a>
+          </div>
+          <div class="row subnav-toggle">
+            {% if user.is_authenticated %}
+              <a class="nav-link"
+                 data-bs-toggle="collapse"
+                 href="#collapseExample"
+                 role="button"
+                 aria-expanded="true"
+                 aria-controls="collapseExample">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="25"
+                     height="25"
+                     fill="currentColor"
+                     class="bi bi-person-circle"
+                     viewBox="0 0 16 16">
                   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                   <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                 </svg>
-                {{ user.get_username }}</li>
-
-            </a>
-            <div class="collapse" id="collapseExample"> 
-              <li class="nav-item">
-                <a class="nav-link subnav" href="{% url 'my-borrowed' %}">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                  </svg>
-                  My borrowed</a></li>
-                  {% if user.is_staff %}
-                    <li class="nav-item"><a class="nav-link subnav" href="{% url 'borrowed' %}">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                {{ user.get_username }}
+              </a>
+            </div>
+            <div class="row subnav">
+              <div class="collapse" id="collapseExample">
+                <div class="row subnav-item">
+                  <a href="{% url 'my-borrowed' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="25"
+                         height="25"
+                         fill="currentColor"
+                         class="bi bi-bookmark-check-fill"
+                         viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                    </svg>
+                    My borrowed
+                  </a>
+                </div>
+                {% if user.is_staff %}
+                  <div class="row subnav-item">
+                    <a href="{% url 'borrowed' %}">
+                      <svg xmlns="http://www.w3.org/2000/svg"
+                           width="25"
+                           height="25"
+                           fill="currentColor"
+                           class="bi bi-journal-bookmark-fill"
+                           viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
                         <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
                         <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                       </svg>
-                      All borrowed</a></li>
-
-                  {% endif %}
-              <li class="nav-item">
-                <a class="nav-link subnav" href="{% url 'logout' %}?next={{ request.path }}">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                  </svg>
-                  Logout</a></li>
+                      All borrowed
+                    </a>
+                  </div>
+                {% endif %}
+                <div class="row subnav-item">
+                  <a href="{% url 'logout' %}?next={{ request.path }}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="25"
+                         height="25"
+                         fill="currentColor"
+                         class="bi bi-box-arrow-right"
+                         viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                    </svg>
+                    Logout
+                  </a>
+                </div>
               </div>
-          {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-              </svg>
-              Login</a></li>
-          {% endif %}
-          
-        </ul>
-      {% endblock %}
-      </div>
-      <div class="col-md-10 col-sm-11 container">
-        <div class="row"
-        {% block content %}{% endblock %}
+            {% else %}
+              <div class="row">
+                <a class="nav-link" href="{% url 'login' %}">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                       width="25"
+                       height="25"
+                       fill="currentColor"
+                       class="bi bi-person-circle"
+                       viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg>
+                  Login
+                </a>
+              {% endif %}
+            </div>
+          </nav>
         </div>
-        <div class='row'>
+        <div class="col-10 content">
+          <main class="main-content">
+            {% block content %}
+            {% endblock content %}
+          </main>
           {% if is_paginated %}
-            <nav>
+            <nav class="pagination-style">
               <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
-                <li class="page-item">
-                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class='page-link' aria-label="Previous"><span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
+                  <li class="page-item">
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
+                      class="page-link"
+                      aria-label="Previous"><span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
                 {% else %}
                   <li class="page-item disabled">
-                    <a href="#" class='page-link' aria-label="Previous"><span aria-hidden="true">&laquo;</span>
-                    </a>
+                    <a href="#" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
                   </li>
                 {% endif %}
                 {% for page in page_obj.paginator.page_range %}
-                  {% if page == page_obj.number %}
-                    <li class="page-item active"><a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a></li>
-                  {% else %}
-                  <li class="page-item"><a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a></li>
-                  {% endif %}
-                {% endfor %}
-                  {# Next page #}
-                  {% if page_obj.has_next %}
+                {% if page == page_obj.number %}
+                  <li class="page-item active">
+                    <a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a>
+                  </li>
+                {% else %}
                   <li class="page-item">
-                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class='page-link' aria-label="Previous"><span aria-hidden="true">&raquo;</span>
+                    <a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a>
+                  </li>
+                {% endif %}
+                {% endfor %}
+                {# Next page #}
+                {% if page_obj.has_next %}
+                  <li class="page-item">
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"
+                      class="page-link"
+                      aria-label="Previous"><span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
-                  {% else %}
-                    <li class="page-item disabled">
-                      <a href="#" class='page-link' aria-label="Previous"><span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  {% endif %} 
+                {% else %}
+                  <li class="page-item disabled">
+                    <a href="#" class='page-link' aria-label="Previous"><span aria-hidden="true">&raquo;</span></a>
+                  </li>
+                {% endif %}
               </ul>
             </nav>
           {% endif %}
         </div>
+      </div>
     </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-</body>
+  </body>
 </html>

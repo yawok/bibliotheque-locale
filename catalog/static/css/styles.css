@@ -1,73 +1,94 @@
 * {
-   padding: 0;
-   margin: 0;
-   font-family: 'Signika', sans-serif;
-}
-html {
-    height: 100%;
-}
-body {
-   background-color: #1E1A19;
-   color: #F55153;
-   height: 100%;
-
-}
-.mynavbar {
-    padding: 2;
-    color: #F55153;
-    background-color: #F5E3DE;
-    height: 100%;
-
-}
-
-.page {
-    height: 100%;
-}
-
-
-.nav-link {
-    padding: 0.6em;
     margin: 0;
-    color:#1E1A19;
+    padding: 0;
+    font-family: 'Signika', 'Lato', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-link:hover , .subnav-item>a:hover{
+    color:#F55153;
+}
+
+.entire-body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar-nav-style {
+    background-color: #F5E3DE;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    color: #1E1A19;
+    height: 100vh;
+}
+
+
+.my-h1 {
+    font-size: 2.75vw;
     font-weight: 800;
-    font-size: 1.2em;
-    
+    color: #F55153;
 }
 
 .subnav {
-    /* sub navigation elements */
-    padding: 0.6em;
-    padding-left: 1.75em;
-}
+    display: flex;
+    flex-direction: column;
 
-.mybrand {
-    font-family: 'Signika', sans-serif;
-    padding-top: 0.3em;
-    padding-bottom: 0;
-    
-}
+} 
 
-.user {
-    padding-bottom: 0;
+.subnav-item {
+    padding: 0.75em;
+    padding-left: 1.5em;
+    background-color: #F5E3DE;
 }
 
 
+.nav-link, .subnav-item>a {
+    color: #1E1A19;
+}
 
-.container {
-    
-    height: 100vh;
+.content {
+    background-color: #1E1A19;
+    color: #F55153;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-left: 2em;
+    padding-top: 2em;
+    height: 100vh;
 }
 
-.sidebar-nav{
-    display: fixed;
+.page-link {
+    background-color: #1E1A19;
+    border-color: #F55153;
+    color: #F55153;
+}
+
+.page-link:hover {
+    background-color: #F55153;
+    color:#F5E3DE;
+
    
-    bottom: 0;
-    left: 0;
-    padding: 0;
-    height: 100%;
-    
+}
+
+.page-item:hover {
+    color:#F5E3DE;
+    background-color: #F55153;
+    border-color: #F55153;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #f5e4de;
+    background-color: #f55153;
+    border-color: #f55153;
 }
