@@ -64,6 +64,7 @@ a {
     justify-content: space-between;
     padding-left: 2em;
     padding-top: 2em;
+    padding-right: 2em;
     height: 100vh;
 }
 
@@ -91,4 +92,13 @@ a {
     color: #f5e4de;
     background-color: #f55153;
     border-color: #f55153;
+}
+
+.card-style {
+    border-radius: 2.25rem;
+    background-color: #F5E3DE;
+}
+
+.main-content {
+    border-radius: 2.25rem;
 }

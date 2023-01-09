@@ -1,19 +1,24 @@
-{% extends 'catalog/base_generic.html' %}
+{% extends "catalog/base_generic.html" %}
 
-{% block title %}<title>Home</title>{% endblock  %}
+{% block title %} <title>Home</title> {% endblock title  %}
 
 
-{% block content  %}
-  <h1>Bibliotheque Locale Home</h1>
-  <p>Welcome to Bibliotheque Locale, a website designed, with lots of guidance, by <a href="https://github.com/yawok"><em>Kenneth Yaw Obeng</em></a>.</p>
-  <h2>Dynamic content</h2>
-  <p>This library has the following record counts:</p>
-  <ul>
-    <li><strong>Books: </strong> {{ number_of_books }}</li>
-    <li><strong>Copies: </strong> {{ number_of_book_instances }}</li>
-    <li><strong>Copies available: </strong> {{ number_of_available_book_instances }}</li>
-    <li><strong>Authors: </strong> {{ number_of_authors }}</li>
-    <li><strong>Book titles that contain <em>'of'</em> :</strong> {{ books_containing_of }}</li>
-  </ul>
-  <p>You have visited this page {{ number_of_visits }} time{{ number_of_visits|pluralize}}.</p>
+{% block content %}
+<div class="card rounded-5 card-style">
+  <div class="card-body rounded-3">
+    <h1 class="card-title">Bibliotheque Locale Home</h1>
+    <h6 class="card-subtitle mb-2 text-muted"><p>Welcome to Bibliotheque Locale, a website designed, with lots of guidance, by <a href="https://github.com/yawok"><em>Kenneth Yaw Obeng</em></a>.</p></h6>
+    <p class="card-text">Some Facts</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Books: </strong> {{ number_of_books }}</li>
+      <li class="list-group-item"><strong>Copies: </strong> {{ number_of_book_instances }}</li>
+      <li class="list-group-item"><strong>Copies available: </strong> {{ number_of_available_book_instances }}</li>
+      <li class="list-group-item"><strong>Authors: </strong> {{ number_of_authors }}</li>
+      <li class="list-group-item"><strong>Book titles that contain <em>'of'</em> :</strong> {{ books_containing_of }}</li>
+    </ul>
+    <div class="card-footer">You have visited this page {{ number_of_visits }} time{{ number_of_visits|pluralize }}.</div>
+    
+  </div>
+</div>
+ 
 {% endblock %}
