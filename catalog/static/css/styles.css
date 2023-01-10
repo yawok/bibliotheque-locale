@@ -95,10 +95,21 @@ a {
 }
 
 .card-style {
-    border-radius: 2.25rem;
+    border-radius: 1.2em;
     background-color: #F5E3DE;
 }
 
-.main-content {
-    border-radius: 2.25rem;
+.card-title {
+    font-weight: 800;
+    font-size: 8.8vw;
+
+}
+
+.card-fact {
+    color: #1E1A19;
+    background-color: #F5E3DE;
+}
+
+.card-text-style {
+    padding-left: 0.4em;
 }
