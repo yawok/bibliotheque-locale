@@ -17,7 +17,7 @@ a {
 }
 
 .entire-body {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -65,7 +65,7 @@ a {
     padding-left: 2em;
     padding-top: 2em;
     padding-right: 2em;
-    height: 100vh;
+    height: 100%;
 }
 
 .page-link {
@@ -99,7 +99,7 @@ a {
     background-color: #F5E3DE;
 }
 
-.card-title {
+.welcome-card-title {
     font-weight: 800;
     font-size: 8.8vw;
 
@@ -112,4 +112,14 @@ a {
 
 .card-text-style {
     padding-left: 0.4em;
+}
+
+.book-list-item {
+    margin-top: 2em;
+    padding: 0 2em;
+    height: 25%;
+}
+
+.book-list-style {
+    padding: 5%;
 }

@@ -1,17 +1,29 @@
 {% extends "catalog/base_generic.html" %}
-
+{% block title %}
+  <title>All Books</title>
+{% endblock title %}
 {% block content %}
-    <h1>Book list</h1>
-    {% if user.is_staff %}
-        <a href="{% url 'book-create' %}">Add book</a>
-    {% endif %}
-    {% if book_list %}
-        {% for book in book_list %}
-        <ul>
-            <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
-        </ul>
-        {% endfor %}
-    {% else %}
-        <h2>There are no books in the library.</h2>
-    {% endif %}
-{% endblock%}
+  <h1>Book list</h1>
+  {% if user.is_staff %}
+    <a href="{% url 'book-create' %}">Add book</a>
+  {% endif %}
+  {% if book_list %}
+    <div class="row book-list">
+      {% for book in book_list %}
+        <div class="col-sm-6 mb-6 mb-sm-0 book-list-item">
+          <div class="card book-list-style">
+            <div class="card-body">
+              <h3 class="card-title">{{ book.title }}</h3>
+              <h5 class="card-text text-muted">{{ book.bookinstace_set.count }}</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="{{ book.get_absolute_url }}" class="btn btn-primary">View More</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <h2>There are no books in the library.</h2>
+  {% endif %}
+
+{% endblock %}
