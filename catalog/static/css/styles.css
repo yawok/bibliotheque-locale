@@ -1,23 +1,30 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Signika', 'Lato', sans-serif;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #1E1A19;
 }
 
 a {
     text-decoration: none;
 }
 
-.nav-link:hover , .subnav-item>a:hover{
-    color:#F55153;
+.nav-link:hover,
+.subnav-item>a:hover {
+    color: #F55153;
 }
 
 .entire-body {
-    height: 100%;
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: row;
@@ -29,7 +36,7 @@ a {
     display: flex;
     flex-direction: column;
     color: #1E1A19;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 
@@ -43,7 +50,7 @@ a {
     display: flex;
     flex-direction: column;
 
-} 
+}
 
 .subnav-item {
     padding: 0.75em;
@@ -52,7 +59,8 @@ a {
 }
 
 
-.nav-link, .subnav-item>a {
+.nav-link,
+.subnav-item>a {
     color: #1E1A19;
 }
 
@@ -65,7 +73,7 @@ a {
     padding-left: 2em;
     padding-top: 2em;
     padding-right: 2em;
-    height: 100%;
+    min-height: 100vh;
 }
 
 .page-link {
@@ -76,13 +84,13 @@ a {
 
 .page-link:hover {
     background-color: #F55153;
-    color:#F5E3DE;
+    color: #F5E3DE;
 
-   
+
 }
 
 .page-item:hover {
-    color:#F5E3DE;
+    color: #F5E3DE;
     background-color: #F55153;
     border-color: #F55153;
 }
@@ -114,12 +122,38 @@ a {
     padding-left: 0.4em;
 }
 
+/* Book Styles */
+
 .book-list-item {
     margin-top: 2em;
     padding: 0 2em;
-    height: 25%;
+
+}
+
+.book-list {
+    margin-bottom: 2em;
+    color: #1E1A19 ;
 }
 
 .book-list-style {
     padding: 5%;
+    height: 100%;
+    background-color: #F5E3DE;
+    border-radius: 1.2em;
+
+}
+
+.book-title {
+    font-size: 30px;
+    color: #F55153;
+}
+
+.card-round-borders {
+    border-radius: 1.2em;
+}
+
+.more-btn {
+    color: #F5E3DE;
+    background-color: #F55153;
+    border-color: #F55153;
 }
