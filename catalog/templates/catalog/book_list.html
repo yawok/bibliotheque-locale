@@ -5,7 +5,7 @@
 {% block content %}
   <h1>Book list</h1>
   {% if user.is_staff %}
-    <a href="{% url 'book-create' %}" class="btn btn-primary more-btn">Add book</a>
+    <a href="{% url 'book-create' %}" class="btn add-btn">Add book</a>
   {% endif %}
   {% if book_list %}
     <div class="row row-cols-1 row-cols-lg-2 g-4 book-list ">
@@ -16,7 +16,7 @@
               <h3 class="card-title book-title md-0">{{ book.title }}</h3>
               <h6 class="card-text text-muted">{{ book.bookinstance_set.count }} copies in total.</h6>
               <p class="card-text">{{ book.summary|slice:"150" }} ...</p>
-              <a href="{{ book.get_absolute_url }}" class="btn btn-primary more-btn">View More</a>
+              <a href="{{ book.get_absolute_url }}" class="btn  more-btn">View More</a>
             </div>
           </div>
         </div>

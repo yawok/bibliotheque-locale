@@ -157,3 +157,24 @@ a {
     background-color: #F55153;
     border-color: #F55153;
 }
+
+.more-btn:hover {
+    background-color: #1E1A19;
+    border-color: #1E1A19;
+    color: #F5E3DE;
+}
+
+.add-btn {
+    font-size: 14px;
+    padding: 2px;
+    margin-bottom: 2em;
+    color: #F5E3DE;
+    background-color: #F55153;
+    border-color: #F55153;
+}
+
+.add-btn:hover {
+    background-color: #F5E3DE;
+    border-color: #F5E3DE;
+    color: #1E1A19; 
+}
