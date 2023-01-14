@@ -1,32 +1,33 @@
 {% extends 'catalog/base_generic.html' %}
-
 {% block content %}
-    <h1>Title: {{book.title}}</h1>
-    <p><strong>Author: </strong><a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p>
-    <p><strong>Summary: </strong>{{ book.summary }}</p>
-    <p><strong>ISBN: </strong>{{ book.isbn }}</p>
-    <p><strong>Language: </strong>{{ book.language }}</p>
-    <p><strong>Genre: </strong>{{ book.genre.all|join:', ' }}</p>
-
-    {% if user.is_staff %}
-        <span style='padding-right:20px;'><a href="{% url 'book-update' book.id  %}">Update</a></span>
-        <span style='padding-right:20px;'><a href="{% url 'book-delete'  book.id %}">Delete</a></span>
-    {% endif %}
-
-    <div style="margin-left:20px;margin-top:20px">
-        <h4>Copies</h4>
-        {% for copy in book.bookinstance_set.all %}
-            <hr>
-            <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
-                {{ copy.get_status_display }}
-            </p>
-            {% if copy.status != 'a' %}
-                <p><strong>Due to be returned: </strong> {{ copy.due_back}}</p>
-            {% endif %}
-            <p><strong>Imprint: </strong> {{ copy.imprint }}</p>
-            <p class="text-muted"><strong>Id: </strong> {{ copy.id }}</p>
-        {% endfor %}
+  <div class="card rounded-5 card-style">
+    <div class="card-body rounded-3">
+      <h1 class="card-title welcome-card-title">{{ book.title }}</h1>
+      <p class="card-text card-text-style">{{ book.summary }}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item card-fact">
+          <strong>Author: </strong><a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a>
+        </li>
+        <li class="list-group-item card-fact">
+          <strong>ISBN: </strong>{{ book.isbn }}
+        </li> 
+        <li class="list-group-item card-fact">
+          <strong>Language: </strong>{{ book.language }}
+        </li>
+        <li class="list-group-item card-fact">
+          <strong>Genre: </strong>{{ book.genre.all|join:', ' }}
+        </li>
+        <li class="list-group-item card-fact">
+          {% if user.is_staff %}
+            <a class="btn update-btn" href="{% url 'book-update' book.id %}">Update</a>
+            <a class="btn update-btn" href="{% url 'book-delete' book.id %}">Delete</a>
+			    {% endif %}
+        </li>
+      </ul>
+			
     </div>
+  </div>
 
+  
 
 {% endblock  %}
