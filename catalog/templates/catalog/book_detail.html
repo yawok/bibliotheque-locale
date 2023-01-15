@@ -34,20 +34,27 @@
           <div class="col">
             <div class="card book-list-style card-round-borders">
               <div class="card-body">
-                <p class="card-subtitle {% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
-                  {{ copy.get_status_display }}
-                </p>
-                {% if copy.status != 'a' %}
-                  <p class="card-text">
-                    <strong>Due to be returned:</strong> {{ copy.due_back }}
-                  </p>
-                {% endif %}
-                <p>
-                  <strong>Imprint:</strong> {{ copy.imprint }}
-                </p>
-                <p class="text-muted">
-                  <strong>Id:</strong> {{ copy.id }}
-                </p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item card-fact  {% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+                    {{ copy.get_status_display }}
+                  </li>
+                  <li class="list-group-item card-fact">
+                    <strong>Due to be returned:</strong>
+                    {% if copy.status != 'a' %}
+                    <p class="card-text">
+                        {{ copy.due_back }}
+                      </p>
+                    {% else %}
+                      -
+                    {% endif %}
+                  </li>
+                  <li class="list-group-item card-fact">
+                    <strong>Imprint:</strong> {{ copy.imprint }}
+                  </li>
+                  <li class="list-group-item card-fact text-muted">
+                    <strong>Id:</strong> {{ copy.id }}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
