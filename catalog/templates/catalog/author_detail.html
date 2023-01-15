@@ -1,56 +1,51 @@
 {% extends "catalog/base_generic.html" %}
-
-
-
-
 {% block content %}
-    <h1><strong>Name:</strong> {{ author.get_full_name }}</h1>
-    <p>
-        Nationality:
-        {% for country in author.nationality %}
-            <i class="flag {{ country.flag_css }}"></i> {{ country.name }}
-        {% endfor %}
-    </p>
-    <p>{{ author.date_of_birth }} - 
-        {% if author.date_of_death %}
-            {{ author.date_of_death }}
-        {% endif %}
-
-    </p>
-
-    
-
-    {% if user.is_staff %}
-        <span style='padding-right:20px;'><a href="{% url 'author-update' author.id  %}">Update</a></span>
-        <span style='padding-right:20px;'><a href="{% url 'author-delete'  author.id %}">Delete</a></span>
-    {% endif %}
-
-    <div style="margin-top:20px;margin-left:20px;">
-        <h3>Books</h3>
-        
-        {% if user.is_staff %}
-        <p><a href="{% url 'book-create' %}">Add book</a></p>
-        {% endif %}
-        
-        {% for book in author.book_set.all %}
-            <a href="{{ book.get_absolute_url }}"><strong>{{ book.title }}</strong></a>({{ book.bookinstance_set.count}})
-            <p>{{ book.summary }}</p>
-        {% endfor %}
+  <div class="card rounded-5 card-style">
+    <div class="card-body rounded-3">
+      <h1 class="card-title welcome-card-title">{{ author.get_full_name }}</h1>
+      <p class="card-text card-text-style"></p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item card-fact">
+          {% for country in author.nationality %}<i class="flag {{ country.flag_css }}"></i> {{ country.name }}{% endfor %}
+        </li>
+        <li class="list-group-item card-fact">
+          {{ author.date_of_birth }} -
+          {% if author.date_of_death %}{{ author.date_of_death }}{% endif %}
+        </li>
+        <li class="list-group-item card-fact">
+          <strong>Language:</strong> {{ book.language }}
+        </li>
+        <li class="list-group-item card-fact">
+          <strong>Genre:</strong> {{ book.genre.all|join:', ' }}
+        </li>
+        <li class="list-group-item card-fact">
+          {% if user.is_staff %}
+            <a class="btn update-btn" href="{% url 'author-update' author.id %}">Update</a>
+            <a class="btn update-btn" href="{% url 'author-delete' author.id %}">Delete</a>
+          {% endif %}
+        </li>
+      </ul>
     </div>
-    <tabel>
-        <tr>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-                
-            </td>
-        </tr>
-    </table>
-
-        
-    
-
-{% endblock %}
+  </div>
+  <div class="copies">
+    <h1>Books</h1>
+    {% if author.book_set.all %}
+      <div class="row row-cols-1 row-cols-lg-2 g-4 book-list ">
+        {% for book in author.book_set.all %}
+          <div class="col">
+            <div class="card book-list-style card-round-borders">
+              <div class="card-body">
+                <h3 class="card-title book-title md-0">{{ book.title }}</h3>
+                <h6 class="card-text text-muted">{{ book.bookinstance_set.count }} copies in total.</h6>
+                <p class="card-text">{{ book.summary|slice:"150" }} ...</p>
+                <a href="{{ book.get_absolute_url }}" class="btn  more-btn">View More</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <h2>There are no books by this author in the library.</h2>
+    {% endif %}
+  </div>
+{% endblock content %}
