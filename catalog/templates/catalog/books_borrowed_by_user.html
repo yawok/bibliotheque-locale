@@ -1,17 +1,25 @@
-{% extends 'catalog/base_generic.html' %}
-
+{% extends "catalog/base_generic.html" %}
+{% block title %}
+  <title>My borrowed books</title>
+{% endblock title %}
 {% block content %}
-    <h1>Borrowed books.</h1>
-    
-    {% if bookinstance_list %}
-        <ul>
-            {% for book_instance in bookinstance_list %}
-                <li class="{% if book_instance.is_overdue %}text-danger{% endif %}">
-                    <a href="{{ book_instance.book.get_absolute_url }}">{{ book_instance.book.title }}</a> {{ book_instance.due_back }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have borrowed no books.</p>
-    {% endif %}
-{% endblock %}
+  <h1>Borrowed books</h1>
+  {% if bookinstance_list %}
+    <div class="row row-cols-1 row-cols-lg-2 g-4 book-list ">
+      {% for book_instance in bookinstance_list %}
+        <div class="col">
+          <div class="card book-list-style card-round-borders">
+            <div class="card-body">
+              <h3 class="card-title book-title md-0">{{ book_instance.book.title }}</h3>
+              <p class="card-text">Due back on {{ book_instance.due_back }}</p>
+              <a href="{{ book_instance.book.get_absolute_url }}"
+                 class="btn  more-btn">View More</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <h2>You have  are no borrowed books.</h2>
+  {% endif %}
+{% endblock content %}
