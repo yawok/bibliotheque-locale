@@ -200,3 +200,16 @@ a {
 .copies {
     margin-top: 2em;
 }
+
+/* Forms */
+.submit-btn {
+    color: #F5E3DE;
+    background-color: #F55153;
+    border-color: #F55153;
+}
+
+.submit-btn:hover {
+    background-color: #F5E3DE;
+    border-color: #F5E3DE;
+    color: #1E1A19; 
+}
