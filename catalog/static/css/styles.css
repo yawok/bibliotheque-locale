@@ -216,4 +216,10 @@ a {
 
 .centre-form {
     width: 50vw;
+    padding-bottom: 30rem;
+}
+
+.modal-style {
+    background-color: #F5E3DE;
+    color: #F55153;
 }

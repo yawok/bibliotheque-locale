@@ -21,7 +21,9 @@
         <li class="list-group-item card-fact">
           {% if user.is_staff %}
             <a class="btn update-btn" href="{% url 'author-update' author.id %}">Update</a>
-            <a class="btn update-btn" href="{% url 'author-delete' author.id %}">Delete</a>
+            <a class="btn update-btn"
+               data-bs-toggle="modal"
+               data-bs-target="#confirmDelete">Delete</a>
           {% endif %}
         </li>
       </ul>
@@ -47,5 +49,33 @@
     {% else %}
       <h2>There are no books by this author in the library.</h2>
     {% endif %}
+  </div>
+  <!-- Confirm Delete Modal -->
+  <div class="modal fade"
+       id="confirmDelete"
+       tabindex="-1"
+       aria-labelledby="confirmDeleteModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-style">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete {{ author.get_full_name }}?</h1>
+          <button type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Do you wish to permanently delete author's information?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="{% url 'author-delete' pk=author.pk %}" method="post">
+            {% csrf_token %}
+            <button type="button" class="btn more-btn">Delete Author</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock content %}
