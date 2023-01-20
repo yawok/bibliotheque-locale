@@ -59,7 +59,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content modal-style">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete {{ author.get_full_name }}?</h1>
+          <h1 class="modal-title fs-5" id="confirmDeleteModalLabel">Delete {{ author.get_full_name }}?</h1>
           <button type="button"
                   class="btn-close"
                   data-bs-dismiss="modal"
@@ -72,7 +72,7 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <form action="{% url 'author-delete' pk=author.pk %}" method="post">
             {% csrf_token %}
-            <button type="button" class="btn more-btn">Delete Author</button>
+            <button class="btn more-btn">Delete Author</button>
           </form>
         </div>
       </div>
