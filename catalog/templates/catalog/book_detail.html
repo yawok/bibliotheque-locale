@@ -6,7 +6,7 @@
       <p class="card-text card-text-style">{{ book.summary }}</p>
       <ul class="list-group list-group-flush">
         <li class="list-group-item card-fact">
-          <strong>Author:</strong><a href="{{ book.author.get_absolute_url }}"> {{ book.author }}</a>
+          <strong>Author:</strong><a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a>
         </li>
         <li class="list-group-item card-fact">
           <strong>ISBN:</strong> {{ book.isbn }}
@@ -20,7 +20,9 @@
         <li class="list-group-item card-fact">
           {% if user.is_staff %}
             <a class="btn update-btn" href="{% url 'book-update' book.id %}">Update</a>
-            <a class="btn update-btn" href="{% url 'book-delete' book.id %}">Delete</a>
+            <a class="btn update-btn"
+               data-bs-toggle="modal"
+               data-bs-target="#confirmDelete">Delete</a>
           {% endif %}
         </li>
       </ul>
@@ -41,7 +43,7 @@
                   <li class="list-group-item card-fact">
                     <strong>Due to be returned:</strong>
                     {% if copy.status != 'a' %}
-                        {{ copy.due_back }}
+                      {{ copy.due_back }}
                     {% else %}
                       -
                     {% endif %}
@@ -61,5 +63,33 @@
     {% else %}
       <h2>There are no copies of this books in the library.</h2>
     {% endif %}
+  </div>
+  <!-- Confirm Delete Modal -->
+  <div class="modal fade"
+       id="confirmDelete"
+       tabindex="-1"
+       aria-labelledby="confirmDeleteModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-style">
+        <div class="modal-header">
+          <h1 class="modal-title fs-1" id="confirmDeleteModalLabel">Delete {{ book.title }}?</h1>
+          <button type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Do you wish to permanently delete this book and all copies from the library?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <form action="{% url 'book-delete' pk=book.pk %}" method="post">
+            {% csrf_token %}
+            <button class="btn more-btn">Delete book</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock content %}
