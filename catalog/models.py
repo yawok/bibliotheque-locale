@@ -51,7 +51,7 @@ class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID of this book for the whole library.")
     book = models.ForeignKey(Book, on_delete=models.RESTRICT, null=True)
     imprint = models.CharField(max_length=255)
-    due_back = models.DateField(null=True, blank=True)
+    due_back = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
     LOAN_STATUS = (
         ('m', 'Maintainance'),
         ('o', 'On loan'),
@@ -92,8 +92,8 @@ class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     nationality = CountryField(multiple=True, blank_label='(select country)', help_text="Hold down “Control”, or “Command” on a Mac, to select more than one." )
-    date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('died', null=True, blank=True)
+    date_of_birth = models.DateField(null=True, blank=True, help_text="YYYY-MM-DD")
+    date_of_death = models.DateField('died', null=True, blank=True, help_text="YYYY-MM-DD")
     
     
     
