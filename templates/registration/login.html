@@ -1,34 +1,14 @@
-{% extends 'catalog/base_generic.html' %}
-
+{% extends "catalog/base_generic.html" %}
 {% block content %}
-    {% if form.errors %}
-        <p>Username and/or password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. Please login with another accout that has access.</p>
-        {% else %}
-            <p>Please login to see this page.</p>   
-        {% endif %}
-        {% endif %}
-
-    <form method="post" action="{% url 'login' %}">
+  {% load bootstrap5 %}
+  <div class="position-relative">
+    <div class="position-absolute top-0 start-50 translate-middle-x centre-form">
+      <h1>Update author information</h1>
+      <form action='' method='post'>
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>
-        <input type="submit" value="Login">
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
-
-    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
-{% endblock %}
+        <div >{% bootstrap_form form %}</div>
+        <input class="btn submit-btn" type='submit' value='Submit' />
+      </form>
+    </div>
+  </div>
+{% endblock content %}
