@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% load bootstrap5 %}
     {% bootstrap_css %}
-
     {% bootstrap_messages %}
     {% block title %}
       <title>Bibliotheque Locale</title>
@@ -129,9 +128,10 @@
                   </div>
                 {% endif %}
                 <div class="row subnav-item">
-                  <a class="nav-link" href=""
-                  data-bs-toggle="modal"
-                  data-bs-target="#confirmLogout">
+                  <a class="nav-link"
+                     href=""
+                     data-bs-toggle="modal"
+                     data-bs-target="#confirmLogout">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          width="25"
                          height="25"
@@ -173,76 +173,74 @@
               <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
                   <li class="page-item">
-                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
-                      class="page-link"
-                      aria-label="Previous"><span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                {% else %}
-                  <li class="page-item disabled">
-                    <a href="#" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-                  </li>
-                {% endif %}
-                {% for page in page_obj.paginator.page_range %}
-                {% if page == page_obj.number %}
-                  <li class="page-item active">
-                    <a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a>
-                  </li>
-                {% else %}
-                  <li class="page-item">
-                    <a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a>
-                  </li>
-                {% endif %}
-                {% endfor %}
-                {# Next page #}
-                {% if page_obj.has_next %}
-                  <li class="page-item">
-                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"
-                      class="page-link"
-                      aria-label="Previous"><span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                {% else %}
-                  <li class="page-item disabled">
-                    <a href="#" class='page-link' aria-label="Previous"><span aria-hidden="true">&raquo;</span></a>
-                  </li>
-                {% endif %}
-              </ul>
-            </nav>
-          {% endif %}
-        </div>
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
+                     class="page-link"
+                     aria-label="Previous"><span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a href="#" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+              </li>
+            {% endif %}
+            {% for page in page_obj.paginator.page_range %}
+              {% if page == page_obj.number %}
+                <li class="page-item active">
+                  <a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a>
+                </li>
+              {% else %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ request.path }}?page={{ page }}">{{ page }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            {# Next page #}
+            {% if page_obj.has_next %}
+              <li class="page-item">
+              <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"
+                 class="page-link"
+                 aria-label="Previous"><span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a href="#" class='page-link' aria-label="Previous"><span aria-hidden="true">&raquo;</span></a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% endif %}
+</div>
+</div>
+</div>
+<!-- Confirm Logout Modal -->
+<div class="modal fade"
+     id="confirmLogout"
+     tabindex="-1"
+     aria-labelledby="confirmLogoutModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-style">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="confirmLogoutModalLabel">Logout?</h1>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you wish to log out?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form action="{% url 'logout' %}?next={{ request.path }}" method="post">
+          {% csrf_token %}
+          <button class="btn more-btn">Yes</button>
+        </form>
       </div>
     </div>
-
-     <!-- Confirm Logout Modal -->
-  <div class="modal fade"
-  id="confirmLogout"
-  tabindex="-1"
-  aria-labelledby="confirmLogoutModalLabel"
-  aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
- <div class="modal-content modal-style">
-   <div class="modal-header">
-     <h1 class="modal-title fs-5" id="confirmLogoutModalLabel">Logout?</h1>
-     <button type="button"
-             class="btn-close"
-             data-bs-dismiss="modal"
-             aria-label="Close"></button>
-   </div>
-   <div class="modal-body">
-     <p>Do you wish to log out?</p>
-   </div>
-   <div class="modal-footer">
-     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-     <form action="{% url 'logout' %}?next={{ request.path }}" method="post">
-       {% csrf_token %}
-       <button class="btn more-btn">Yes</button>
-     </form>
-   </div>
- </div>
+  </div>
 </div>
-</div> 
-    
-    {% bootstrap_javascript %} 
-  </body>
+{% bootstrap_javascript %}
+</body>
 </html>
