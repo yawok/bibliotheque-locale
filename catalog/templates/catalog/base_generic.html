@@ -28,11 +28,7 @@
         <nav class="sticky-top .d-none .d-lg-block .d-xl-none">
           <div class="row brand .d-none .d-lg-block .d-xl-none">
             <a class="link" href="{% url 'index' %}">
-              <h3 class="my-h1">
-                Bibliotheque
-                <br/>
-                Locale
-              </h3>
+              <img src="{% static 'media/logo.svg' %}"  alt="logo" />
             </a>
           </div>
           <div class="row">
@@ -105,6 +101,7 @@
                 <div class="d-none d-lg-block p-1">My borrowed</div>
               </a>
             </div>
+            {% if user.is_staff %}
             <div class="row">
               <a class="nav-link d-inline-flex" href="{% url 'borrowed' %}">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -118,11 +115,11 @@
                   <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                 </svg>
                 <div class="d-none d-lg-block p-1">All borrowed</div>
-                {% if user.is_staff %}
                 </a>
               </div>
+              {% endif %}
               <div class="row">
-                <a class="nav-link d-inline-flex"
+                <a class="nav-link d-inline-flex" href=""
                    data-bs-toggle="modal"
                    data-bs-target="#confirmLogout">
                   <svg xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +131,6 @@
                     <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
                     <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
                   </svg>
-                {% endif %}
                 <div class="d-none d-lg-block p-1">Logout</div>
               </a>
             </div>
@@ -156,7 +152,8 @@
           {% endif %}
         </nav>
       </div>
-      <div class="col-md-10 col-sm-11 content overflow-auto">
+      <!--Main content here-->
+      <div class="col-lg-10 col-11 content overflow-auto">
         <main class="main-content ">
           {% block content %}
           {% endblock content %}
