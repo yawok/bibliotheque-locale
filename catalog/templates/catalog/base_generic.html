@@ -23,20 +23,25 @@
     </style>
   </head>
   <body>
-    <header class="header-style">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#F5E3DE" class="bi bi-list" viewBox="0 0 16 16">
+    <header class="header-style sticky-top d-flex justify-content-around">
+      <div>
+        <svg class="mt-4 ms-4"xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#F5E3DE" class="bi bi-list" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-      </svg>
-      
-      <img class="logo" src="{% static 'media/logo.svg' %}"  alt="logo" />
-      <h1 style="color: #F5E3DE">Bibliotheque Locale</h1>
+        </svg>
+      </div>
+      <div class="d-flex m-auto pe-5 justify-content-center pt-1 pb-1">
+        <a class="nav-link d-inline-flex" href="{% url 'index' %}">
+          <img class="logo" src="{% static 'media/logo.svg' %}"  alt="logo" />
+          <h1 class="logo-text align-self-center d-none d-md-block">Bibliotheque Locale</h1>
+        </a>
+      </div>
     </header>
     <div class="grid entire-body">
-      <div class="col-lg-2 col-1 sidebar-nav-style .d-none .d-lg-block .d-xl-none">
+      <div class="d-none col-0 sidebar-nav-style .d-none .d-lg-block .d-xl-none">
         <nav class="sticky-top .d-none .d-lg-block .d-xl-none">
           <div class="row brand .d-none .d-lg-block .d-xl-none">
             <a class="link" href="{% url 'index' %}">
-              <img class="logo" src="{% static 'media/logo.svg' %}"  alt="logo" />
+              <!--<img class="logo" src="{% static 'media/logo.svg' %}"  alt="logo" />-->
             </a>
           </div>
           <div class="row">
@@ -161,7 +166,7 @@
         </nav>
       </div>
       <!--Main content here-->
-      <div class="col-lg-10 col-11 content overflow-auto">
+      <div class=" content overflow-auto">
         <main class="main-content ">
           {% block content %}
           {% endblock content %}
