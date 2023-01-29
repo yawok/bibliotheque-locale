@@ -36,7 +36,8 @@ a {
     display: flex;
     flex-direction: column;
     color: #1E1A19;
-    min-height: 100vh;
+    width: 250px;
+
 }
 
 
@@ -216,7 +217,7 @@ a {
 
 .centre-form {
     width: 50vw;
-    padding-bottom: 30rem;
+    padding-bottom: 30px;
 }
 
 .modal-style {
@@ -226,4 +227,22 @@ a {
 
 .light-text {
     color: #F5E3DE;
+}
+
+/*Header*/
+.header-style {
+    
+    background-color: #1E1A19;
+}
+
+.logo {
+    padding: auto;
+    margin: auto;
+    border: auto;
+
+}
+
+.logo-text {
+    color: #F55153;
+    font-size: 50px;
 }
