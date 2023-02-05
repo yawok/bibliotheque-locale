@@ -130,4 +130,4 @@ dmypy.json
 
 /fixtures
 *.DS_Store
-/staticfiles
+staticfiles
