@@ -1,4 +1,4 @@
-{% extends 'catalog/base_generic.html' %}
+{% extends "catalog/base_generic.html" %}
 {% block title %}
   <title>Confirm author deletion</title>
 {% endblock title %}
@@ -8,7 +8,7 @@
     <p>Are you sure you want to delete the author {{ author }}?</p>
     <form action='' method='post'>
         {% csrf_token %}
-        <input type='submit' value='Yes, delete.'>
+        <input type="submit" value='Yes, delete.'>
     </form>        
 
-{% endblock %}
+{% endblock content %}
