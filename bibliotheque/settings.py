@@ -141,6 +141,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ["https://web-production-d1c0.up.railway.app"]
 
 # Update database configuration from $DATABASE_URL.
 import dj_database_url
