@@ -61,7 +61,7 @@
         <div class="offcanvas-header">
           <h4 class="offcanvas-title" id="offcanvasExampleLabel">
             Welcome
-            {% if user.is_authenticated %}, {{ user.get_username }}.{% endif %}
+            {% if user.is_authenticated %}, {{ user.get_username }}.{% else %} no user here{% endif %}
           </h4>
           <button type="button"
                   class="btn-close"
