@@ -164,7 +164,7 @@
             </div>
           {% else %}
             <div class="row pt-2">
-              <a class="nav-link" href="{% url 'login' %}">
+              <a class="nav-link" href="{% url 'users:login' %}">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      width="25"
                      height="25"
@@ -251,7 +251,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <form action="{% url 'logout' %}?next={{ request.path }}" method="post">
+        <form action="{% url 'users:logout' %}?next={{ request.path }}" method="post">
           {% csrf_token %}
           <button class="btn more-btn">Yes</button>
         </form>

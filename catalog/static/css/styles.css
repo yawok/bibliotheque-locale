@@ -234,3 +234,7 @@ a {
   color: #f55153;
   font-size: 50px;
 }
+
+.form-link {
+  padding-left: 10px;
+}

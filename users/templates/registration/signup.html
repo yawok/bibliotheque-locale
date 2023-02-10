@@ -1,0 +1,15 @@
+{% extends "catalog/base_generic.html" %}
+{% block content %}
+  {% load bootstrap5 %}
+  <div class="position-relative">
+    <div class="position-absolute top-0 start-50 translate-middle-x centre-form">
+      <h1>Signup</h1>
+      <form action='' method='post'>
+        {% csrf_token %}
+        <div >{% bootstrap_form form %}</div>
+        <input class="btn submit-btn" type='submit' value='Submit' />
+      </form>
+      <a href="{% url 'users:password_reset' %}">Lost password?</a>
+    </div>
+  </div>
+{% endblock content %}

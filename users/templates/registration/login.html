@@ -9,7 +9,8 @@
         <div >{% bootstrap_form form %}</div>
         <input class="btn submit-btn" type='submit' value='Submit' />
       </form>
-      <a href="{% url 'password_reset' %}">Lost password?</a>
+      <a href="{% url 'users:password_reset' %}">Lost password?</a>
+      <a class="form-link" href="{% url 'users:signup' %}">Already have an account?</a>
     </div>
   </div>
 {% endblock content %}

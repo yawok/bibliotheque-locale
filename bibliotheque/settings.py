@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["127.0.0.1", "web-production-d1c0.up.railway.app" ]
 INSTALLED_APPS = [
     # My apps
     'catalog.apps.CatalogConfig',
+    'users.apps.UsersConfig',
 
     # Third party apps
     'django_countries',
@@ -135,6 +136,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = "user:login"
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
