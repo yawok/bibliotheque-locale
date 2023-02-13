@@ -1,4 +1,4 @@
-![Project Image](project-image-url)
+![Project Image](project_image.png)
 
 ---
 
